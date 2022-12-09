@@ -1,0 +1,61 @@
+syntax = "proto3";
+
+service AddOneService {
+    rpc addOne(Number) returns (Number);
+}
+
+message Number {
+    int32 input = 1;
+}
+
+message Result {
+    int32 result = 1;
+}
+
+service BookService {
+    rpc addBook(Book) returns (ResultAddBook);
+    rpc getBook(BookIsbn) returns (Book);
+}
+
+message BookIsbn {
+    string input = 1;
+}
+
+
+message Book {
+    string id = 1;
+    string title = 2;
+    string author = 3;
+    int32 pub_year = 4;
+
+    enum GenreEnum {
+        DEFAULT = 0;
+        FICTION = 1;
+        NONFICTION = 2;
+        HORROR = 3;
+    }
+
+    GenreEnum genre = 5;
+}
+
+message ResultAddBook {
+    string result = 1;
+}
+
+message InventoryItem {
+    string inventory_number = 1;
+
+    oneof type {
+        string name = 2;
+        Book book = 3;
+    }
+
+    enum Status {
+        DEFAULT = 0;
+        AVAILABLE = 1;
+        TAKEN = 2;
+    }
+
+    Status status = 4;
+}
+
