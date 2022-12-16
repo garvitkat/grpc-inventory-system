@@ -2,8 +2,8 @@ from concurrent import futures
 import logging
 
 import grpc
-import services.inventory_pb2_grpc as inventory_pb2_grpc
-import services.inventory_pb2 as inventory_pb2
+import inventory_pb2_grpc 
+import inventory_pb2
 
 Dict = {}
 
